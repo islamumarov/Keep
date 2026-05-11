@@ -1,5 +1,6 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Yarp.ReverseProxy.Configuration;
@@ -47,6 +48,34 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseRouting();
 app.UseAuthentication();
+
+// Allow anonymous access for auth endpoints, but enforce auth for protected paths
+app.Use(
+    async (context, next) =>
+    {
+        var path = context.Request.Path;
+
+        // Let auth service endpoints be reachable without a JWT
+        if (path.StartsWithSegments("/api/auth"))
+        {
+            await next();
+            return;
+        }
+
+        // Protect todo endpoints at the gateway level
+        if (path.StartsWithSegments("/api/todos"))
+        {
+            if (context.User?.Identity?.IsAuthenticated != true)
+            {
+                await context.ChallengeAsync();
+                return;
+            }
+        }
+
+        await next();
+    }
+);
+
 app.UseAuthorization();
 
 app.MapReverseProxy(proxyPipeline =>
@@ -70,8 +99,7 @@ app.MapReverseProxy(proxyPipeline =>
             await next(context);
             }
         );
-    })
-    .RequireAuthorization();
+});
 app.MapHealthChecks("/health");
 
 app.Run();
