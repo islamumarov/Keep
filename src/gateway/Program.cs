@@ -15,7 +15,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // AUTH
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+builder
+    .Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
         options.Authority = null; // we're self-contained → manual validation
@@ -28,12 +29,12 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
             IssuerSigningKey = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"]!))
+                Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"]!)
+            )
         };
     });
 
 builder.Services.AddAuthorization();
-
 
 var app = builder.Build();
 
@@ -50,7 +51,8 @@ app.UseAuthorization();
 
 app.MapReverseProxy(proxyPipeline =>
     {
-        proxyPipeline.Use(async (context, next) =>
+        proxyPipeline.Use(
+            async (context, next) =>
         {
             if (context.User.Identity?.IsAuthenticated == true)
             {
@@ -60,13 +62,14 @@ app.MapReverseProxy(proxyPipeline =>
                 {
                     context.Request.Headers["X-User-Id"] = userId;
                 }
-            
+
                 // Optional: forward full Authorization header
                 // context.Request.Headers["Authorization"] remains as-is by default in YARP
             }
-        
+
             await next(context);
-        });
+            }
+        );
     })
     .RequireAuthorization();
 app.MapHealthChecks("/health");
