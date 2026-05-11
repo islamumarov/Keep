@@ -1,2 +1,4 @@
 # ignore all appsettings.Development.json
 **/appsettings.Development.json
+**/src/**/appsettings.Development.json
+*.Development.json
