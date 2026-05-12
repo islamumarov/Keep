@@ -26,4 +26,8 @@
     <Folder Include="Domain\Aggregates\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Keep.ServiceDefaults\Keep.ServiceDefaults.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -12,4 +12,8 @@
     <PackageReference Include="Yarp.ReverseProxy" Version="2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Keep.ServiceDefaults\Keep.ServiceDefaults.csproj" />
+  </ItemGroup>
+
 </Project>

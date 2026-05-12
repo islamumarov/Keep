@@ -13,6 +13,8 @@ using Microsoft.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddServiceDefaults();
+
 builder.Services.AddDbContext<AuthDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -80,15 +82,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.MapDefaultEndpoints();
+
 app.UseAuthentication();
 app.UseAuthorization();
-// Auto-migrate on startup (dev only – use real migrations in prod!)
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<AuthDbContext>();
-    db.Database.Migrate();   // requires Microsoft.EntityFrameworkCore.Design
-}
-
 // ── Endpoints ───────────────────────────────────────────────
 var auth = app.MapGroup("/api/auth");
 

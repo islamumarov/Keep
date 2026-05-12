@@ -7,6 +7,8 @@ using Yarp.ReverseProxy.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddServiceDefaults();
+
 // ---- Add Yarp
 builder
     .Services.AddReverseProxy()
@@ -100,6 +102,6 @@ app.MapReverseProxy(proxyPipeline =>
             }
         );
 });
-app.MapHealthChecks("/health");
+app.MapDefaultEndpoints();
 
 app.Run();

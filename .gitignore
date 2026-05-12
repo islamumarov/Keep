@@ -2,3 +2,8 @@
 **/appsettings.Development.json
 **/src/**/appsettings.Development.json
 *.Development.json
+# ignore folders with .
+.agents/
+.opencode/
+aspire.*
+.idea/

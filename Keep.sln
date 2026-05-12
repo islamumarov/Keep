@@ -14,6 +14,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "todo-service", "todo-servic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoService", "src\todo-service\TodoService\TodoService.csproj", "{7B1585F7-EE3D-6E0C-30C1-1C008A7F4412}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Keep.MigrationService", "src\Keep.MigrationService\Keep.MigrationService.csproj", "{AAEBB9B1-897F-4244-BC7B-D5CE51CBC793}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Keep.ServiceDefaults", "src\Keep.ServiceDefaults\Keep.ServiceDefaults.csproj", "{F259C3ED-6E2F-4AA2-86FA-0C18D59C3E32}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "aspire", "aspire", "{C4AF43C6-3EB7-4B54-873B-370C58D9D1B9}"
+	ProjectSection(SolutionItems) = preProject
+		src\apphost.cs = src\apphost.cs
+		src\apphost.run.json = src\apphost.run.json
+		src\aspire.config.json = src\aspire.config.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +43,14 @@ Global
 		{7B1585F7-EE3D-6E0C-30C1-1C008A7F4412}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B1585F7-EE3D-6E0C-30C1-1C008A7F4412}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B1585F7-EE3D-6E0C-30C1-1C008A7F4412}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAEBB9B1-897F-4244-BC7B-D5CE51CBC793}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAEBB9B1-897F-4244-BC7B-D5CE51CBC793}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAEBB9B1-897F-4244-BC7B-D5CE51CBC793}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAEBB9B1-897F-4244-BC7B-D5CE51CBC793}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F259C3ED-6E2F-4AA2-86FA-0C18D59C3E32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F259C3ED-6E2F-4AA2-86FA-0C18D59C3E32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F259C3ED-6E2F-4AA2-86FA-0C18D59C3E32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F259C3ED-6E2F-4AA2-86FA-0C18D59C3E32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,6 +61,9 @@ Global
 		{0AB3C8F7-9F32-0880-F57C-4C4B2B052C79} = {518D249E-2B9B-22C4-DB83-367A4F17464C}
 		{805F9AC6-54CE-477B-3272-2408FBA7F171} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{7B1585F7-EE3D-6E0C-30C1-1C008A7F4412} = {805F9AC6-54CE-477B-3272-2408FBA7F171}
+		{AAEBB9B1-897F-4244-BC7B-D5CE51CBC793} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{F259C3ED-6E2F-4AA2-86FA-0C18D59C3E32} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{C4AF43C6-3EB7-4B54-873B-370C58D9D1B9} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF1B20E7-4AE2-4071-ABFE-BF518672C2D6}

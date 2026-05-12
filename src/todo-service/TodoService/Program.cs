@@ -12,6 +12,8 @@ using TodoService.Infrastructure.Persistence.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddServiceDefaults();
+
 builder.Services.AddDbContext<TodoDbContext>(options =>
 {
     var connectionString = builder.Configuration.GetConnectionString("TodoDb")
@@ -109,6 +111,8 @@ if (app.Environment.IsDevelopment())
 
 
 app.UseHttpsRedirection();
+
+app.MapDefaultEndpoints();
 
 app.UseAuthentication();
 app.UseAuthorization();
